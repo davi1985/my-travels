@@ -3,7 +3,6 @@ import HomeTemplate from 'templates/Home'
 import { MapProps } from 'components/Map/types'
 import { client } from 'graphql/client'
 import { GET_PLACES } from 'graphql/queries'
-import {} from 'graphql/'
 import { GetPlacesQuery } from 'graphql/generated/graphql'
 
 export default function Home({ places }: MapProps) {
