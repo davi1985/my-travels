@@ -4,7 +4,7 @@ export type Place = {
   slug: string
   location: {
     latitude: number
-    logintude: number
+    longitude: number
   }
 }
 

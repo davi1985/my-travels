@@ -21,7 +21,7 @@ describe('<Map />', () => {
         slug: 'icapui',
         location: {
           latitude: 0,
-          logintude: 0
+          longitude: 0
         }
       },
       {
@@ -30,7 +30,7 @@ describe('<Map />', () => {
         slug: 'reykjavik',
         location: {
           latitude: 129,
-          logintude: -50
+          longitude: -50
         }
       }
     ]
