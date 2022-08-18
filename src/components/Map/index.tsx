@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { MapContainer, Marker, TileLayer } from 'react-leaflet'
+import { MapWrapper } from './styles'
 import { MapProps } from './types'
 
 const MAPBOX_API_KEY = process.env.NEXT_PUBLIC_MAPBOX_API_KEY
@@ -24,26 +25,31 @@ const Map = ({ places }: MapProps) => {
   const router = useRouter()
 
   return (
-    <MapContainer
-      center={[0, 0]}
-      zoom={2}
-      style={{ height: '100%', width: '100%' }}
-    >
-      <CustomTileLayer />
+    <MapWrapper>
+      <MapContainer
+        center={[0, 0]}
+        zoom={3}
+        style={{ height: '100%', width: '100%' }}
+        minZoom={3}
+      >
+        <CustomTileLayer />
 
-      {places?.map(({ id, slug, name, location: { latitude, longitude } }) => (
-        <Marker
-          position={[latitude, longitude]}
-          title={name}
-          key={`place-${id}`}
-          eventHandlers={{
-            click: () => {
-              router.push(`/place/${slug}`)
-            }
-          }}
-        />
-      ))}
-    </MapContainer>
+        {places?.map(
+          ({ id, slug, name, location: { latitude, longitude } }) => (
+            <Marker
+              position={[latitude, longitude]}
+              title={name}
+              key={`place-${id}`}
+              eventHandlers={{
+                click: () => {
+                  router.push(`/place/${slug}`)
+                }
+              }}
+            />
+          )
+        )}
+      </MapContainer>
+    </MapWrapper>
   )
 }
 
