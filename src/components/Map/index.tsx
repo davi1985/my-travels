@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
+import { MapConsumer, MapContainer, Marker, TileLayer } from 'react-leaflet'
 import { MapWrapper } from './styles'
 import { MapProps } from './types'
 
@@ -36,6 +36,21 @@ const Map = ({ places }: MapProps) => {
           [180, -180]
         ]}
       >
+        <MapConsumer>
+          {(map) => {
+            const width =
+              window.innerWidth ||
+              document.documentElement.clientWidth ||
+              document.body.clientWidth
+
+            if (width < 768) {
+              map.setMinZoom(2)
+            }
+
+            return null
+          }}
+        </MapConsumer>
+
         <CustomTileLayer />
 
         {places?.map(
